@@ -4,7 +4,10 @@
   "description": "Download npm packages and their dependencies.",
   "author": "Boye Borg",
   "license": "MIT",
-  "main": "cli.js",
+  "main": "index.js",
+  "bin": {
+    "carve": "cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
