@@ -1,6 +1,6 @@
 {
   "name": "npm-carve",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Download npm packages and their dependencies.",
   "author": "Boye Borg",
   "license": "MIT",
