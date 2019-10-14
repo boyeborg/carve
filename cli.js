@@ -26,11 +26,6 @@ const cli = meow(
         type: "string",
         alias: "o",
         default: "packages"
-      },
-      verbose: {
-        type: "boolean",
-        default: false,
-        alias: "v"
       }
     }
   }
