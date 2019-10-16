@@ -13,9 +13,10 @@ const cli = meow(
 	  $ carve <package-name>... [options]
 
   Options
-    --output, -o  Output directory (default: packages)
-    --help        Displays this help text
-    --version     Displays the version number
+    --output, -o    Output directory (default: packages)
+    --registry, -r  NPM registry to use (default: https://registry.npmjs.org)
+    --help          Displays this help text
+    --version       Displays the version number
 
 	Examples
 	  $ carve meow@5.0.0 react "moment@1||2||3" --output=dump
@@ -26,6 +27,11 @@ const cli = meow(
         type: "string",
         alias: "o",
         default: "packages"
+      },
+      registry: {
+        type: "string",
+        alias: "r",
+        default: "https://registry.npmjs.org"
       }
     }
   }
@@ -49,7 +55,12 @@ const tasks = new Listr([
               error: noop
             };
 
-            ctx.packages = Object.values(await carve(cli.input, logger));
+            ctx.packages = Object.values(
+              await carve(cli.input, {
+                logger,
+                registry: cli.flags["registry"]
+              })
+            );
           }
         }
       ])
@@ -84,6 +95,6 @@ const tasks = new Listr([
 ]);
 
 tasks.run().catch(err => {
-  console.error(err);
+  console.error(`Error: ${err.message || "Unable to carve packages"}`);
   process.exit(2);
 });

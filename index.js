@@ -3,7 +3,11 @@ const { noop } = require("./utils");
 
 const noopLogger = { log: noop, error: noop, warm: noop };
 
-const carve = async (packageList, logger = noopLogger) => {
+const carve = async (
+  packageList,
+  { logger = noopLogger, ...pacoteOptions }
+) => {
+  console.log(pacoteOptions);
   const packages = {};
   const unresolvedPackages = [...packageList];
 
@@ -12,7 +16,8 @@ const carve = async (packageList, logger = noopLogger) => {
 
     try {
       const { dependencies, _id: id, _resolved: url } = await pacote.manifest(
-        currentPackage
+        currentPackage,
+        pacoteOptions
       );
 
       logger.log(id);
@@ -31,7 +36,7 @@ const carve = async (packageList, logger = noopLogger) => {
     } catch (e) {
       const msg = `Unable to resolve package ${currentPackage}`;
       logger.error(msg);
-      throw new Error(e);
+      throw e;
     }
   }
   return packages;
