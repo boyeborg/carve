@@ -1,5 +1,5 @@
 {
-  "name": "npm-carve",
+  "name": "@boyeborg/carve",
   "version": "1.0.3",
   "description": "Download npm packages and their dependencies.",
   "author": "Boye Borg",
