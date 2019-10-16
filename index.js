@@ -7,7 +7,6 @@ const carve = async (
   packageList,
   { logger = noopLogger, ...pacoteOptions }
 ) => {
-  console.log(pacoteOptions);
   const packages = {};
   const unresolvedPackages = [...packageList];
 
