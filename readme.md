@@ -3,7 +3,7 @@
 Install with npm:
 
 ```
-npm install --global npm-carve
+npm install --global @boyeborg/carve
 ```
 
 ## Usage
