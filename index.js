@@ -1,6 +1,9 @@
 const pacote = require("pacote");
+const { noop } = require("./utils");
 
-const carve = async (packageList, logger) => {
+const noopLogger = { log: noop, error: noop, warm: noop };
+
+const carve = async (packageList, logger = noopLogger) => {
   const packages = {};
   const unresolvedPackages = [...packageList];
 
@@ -31,7 +34,7 @@ const carve = async (packageList, logger) => {
       throw new Error(e);
     }
   }
-  return Object.values(packages);
+  return packages;
 };
 
 module.exports = carve;

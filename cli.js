@@ -49,7 +49,7 @@ const tasks = new Listr([
               error: noop
             };
 
-            ctx.packages = await carve(cli.input, logger);
+            ctx.packages = Object.values(await carve(cli.input, logger));
           }
         }
       ])
