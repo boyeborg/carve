@@ -1,7 +1,7 @@
 const pacote = require("pacote");
 const { noop } = require("./utils");
 
-const noopLogger = { log: noop, error: noop, warm: noop };
+const noopLogger = { log: noop, error: noop, warn: noop };
 
 const carve = async (
   packageList,
