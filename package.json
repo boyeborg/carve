@@ -28,11 +28,11 @@
     "package"
   ],
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "dependencies": {
     "listr": "^0.14.3",
-    "meow": "^5.0.0",
-    "pacote": "^9.5.8"
+    "meow": "^7.1.0",
+    "pacote": "^11.1.11"
   }
 }

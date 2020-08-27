@@ -14,10 +14,14 @@ const carve = async (
     currentPackage = unresolvedPackages.pop();
 
     try {
-      const { dependencies, _id: id, _resolved: url } = await pacote.manifest(
-        currentPackage,
-        pacoteOptions
-      );
+      const {
+        dependencies,
+        _resolved: url,
+        name,
+        version
+      } = await pacote.manifest(currentPackage, pacoteOptions);
+
+      const id = `${name}@${version}`;
 
       logger.log(id);
 
@@ -28,7 +32,7 @@ const carve = async (
       packages[id] = url;
 
       unresolvedPackages.push(
-        ...Object.entries(dependencies).map(
+        ...Object.entries(dependencies || []).map(
           ([name, version]) => `${name}@${version}`
         )
       );
