@@ -1,6 +1,6 @@
 {
   "name": "@boyeborg/carve",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Download npm packages and their dependencies.",
   "author": "Boye Borg",
   "license": "MIT",
