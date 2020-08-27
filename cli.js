@@ -79,7 +79,13 @@ const tasks = new Listr([
             }
 
             ctx.packages.forEach(packageUrl => {
-              const fileName = packageUrl.split("/").slice(-1)[0];
+              const fileName = new URL(packageUrl).pathname
+                .slice(1)
+                .replace("/-/", "/")
+                .replace("@", "")
+                .split("/")
+                .join("-");
+
               const file = fs.createWriteStream(`${dir}/${fileName}`);
 
               task.title = fileName;
